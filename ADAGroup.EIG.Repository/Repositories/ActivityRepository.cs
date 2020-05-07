@@ -6,9 +6,9 @@ using System.Text;
 
 namespace ADAGroup.EIG.Repository.Repositories
 {
-    public class EventRepository : BaseRepository<Event>, IEventRepository
+    public class ActivityRepository : BaseRepository<Activity>, IActivityRepository
     {
-        public EventRepository(DatabaseContext dbContext) : base(dbContext)
+        public ActivityRepository(DatabaseContext dbContext) : base(dbContext)
         {
 
         }

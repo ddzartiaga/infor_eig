@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ADAGroup.EIG.Repository.Repositories
 {
-    public class EIGRepository : BaseRepository<EIGroup>, IEIGRepository
+    public class EIGRepository : BaseRepository<InterestGroup>, IEIGRepository
     {
         public EIGRepository(DatabaseContext dbContext) : base(dbContext)
         {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ADAGroup.EIG.Repository.Contracts
 {
-    public interface IEventRepository : IRepository<Event>
+    public interface IActivityRepository : IRepository<Activity>
     {
     }
 }

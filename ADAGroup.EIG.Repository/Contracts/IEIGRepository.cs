@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ADAGroup.EIG.Repository.Contracts
 {
-    public interface IEIGRepository : IRepository<EIGroup>
+    public interface IEIGRepository : IRepository<InterestGroup>
     {
     }
 }

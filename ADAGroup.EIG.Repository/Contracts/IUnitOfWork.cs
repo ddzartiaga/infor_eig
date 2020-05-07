@@ -7,7 +7,7 @@ namespace ADAGroup.EIG.Repository.Contracts
     public interface IUnitOfWork
     {
         IEIGRepository EIGRepo { get; }
-        IEventRepository EventRepo { get; }
+        IActivityRepository ActivityRepo { get; }
 
         void Commit();
 

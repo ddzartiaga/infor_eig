@@ -9,8 +9,8 @@ namespace ADAGroup.EIG.Repository
 {
     public class DatabaseContext : DbContext
     {
-        DbSet<EIGroup> EIGs { get; set; }
-        DbSet<Event> Events { get; set; }
+        DbSet<InterestGroup> EIGs { get; set; }
+        DbSet<Activity> Events { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
@@ -19,8 +19,10 @@ namespace ADAGroup.EIG.Repository
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new EIGEntityTypeConfiguration());
-            //modelBuilder.ApplyConfiguration(new EIGEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new GroupEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ActivityEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new OfficerEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ImageAssetEntityTypeConfiguration());
         }
     }
 }

@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ADAGroup.EIG.Repository\ADAGroup.EIG.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

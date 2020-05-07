@@ -8,7 +8,7 @@ namespace ADAGroup.EIG.Repository
     {
         private readonly DatabaseContext _databaseContext;
         private IEIGRepository _eigRepo;
-        private IEventRepository _eventRepo;
+        private IActivityRepository _activityRepo;
 
         public UnitOfWork(DatabaseContext dbContext)
         {
@@ -18,7 +18,7 @@ namespace ADAGroup.EIG.Repository
 
         public IEIGRepository EIGRepo => _eigRepo ?? new EIGRepository(_databaseContext);
 
-        public IEventRepository EventRepo => _eventRepo ?? new EventRepository(_databaseContext);
+        public IActivityRepository ActivityRepo => _activityRepo ?? new ActivityRepository(_databaseContext);
 
         public void Commit()
         {

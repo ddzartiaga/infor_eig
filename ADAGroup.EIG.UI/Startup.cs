@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ADAGroup.EIG.Repository;
+using ADAGroup.EIG.Repository.Contracts;
+using ADAGroup.EIG.Service.Contracts;
+using ADAGroup.EIG.Service.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +33,9 @@ namespace ADAGroup.EIG.UI
                 b => b.MigrationsAssembly("ADAGroup.EIG.UI")));
 
             services.AddScoped<DatabaseContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IInterestGroupService, InterestGroupService>();
+            services.AddScoped<IActivityService, ActivityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
