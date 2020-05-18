@@ -20,9 +20,9 @@ namespace ADAGroup.EIG.Repository.Repositories
             _entities = _dbContext.Set<T>();
         }
 
-        public IQueryable GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return _entities.AsQueryable();
+            return _entities.ToList();
         }
 
         public T Get(Guid id)

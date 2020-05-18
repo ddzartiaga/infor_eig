@@ -4,6 +4,7 @@ using ADAGroup.EIG.Service.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ADAGroup.EIG.Service.Implementations
 {
@@ -16,28 +17,39 @@ namespace ADAGroup.EIG.Service.Implementations
             _unitOfWork = uow;
         }
 
-        public void UpsertInterestGroup()
+        public List<InterestGroup> GetInterestGroups()
         {
             try
             {
-                InterestGroup group = new InterestGroup()
-                {
-                    Name = "Sample",
-                    DateCreated = DateTime.Now,
-                    Officers = new List<Officer>() {
-                        new Officer()
-                        {
-                            Name = "Dudz", Designation = "Tanod", DateCreated = DateTime.Now
-                        }
-                    },
-                };
+                return _unitOfWork.EIGRepo.GetAll().ToList();
+            } 
+            catch (Exception ex)
+            {
+                return new List<InterestGroup>();
+            }
+        }
 
-                _unitOfWork.EIGRepo.Add(group);
+        public void UpsertInterestGroup(InterestGroup group)
+        {
+            try
+            {
+                if(group.Id == Guid.Empty)
+                {
+                    // Insert new record
+                    group.DateCreated = DateTime.UtcNow;
+                    _unitOfWork.EIGRepo.Add(group);
+                }
+                else
+                {
+                    group.DateModified = DateTime.UtcNow;
+                    _unitOfWork.EIGRepo.Update(group);
+                }
+                
                 _unitOfWork.Commit();
             } 
             catch(Exception ex)
             {
-
+                // TODO: Log error
             }
             
         }

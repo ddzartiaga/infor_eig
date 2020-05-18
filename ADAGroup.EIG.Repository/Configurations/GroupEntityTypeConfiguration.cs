@@ -15,7 +15,6 @@ namespace ADAGroup.EIG.Repository.Configurations
             config.HasKey(c => c.Id);
             config.Property(c => c.Id).ValueGeneratedOnAdd();
             config.HasMany(c => c.Activities).WithOne(a => a.Group).HasForeignKey(a => a.GroupId);
-            config.HasMany(c => c.Officers).WithOne(a => a.Group).HasForeignKey(a => a.GroupId);
             config.HasMany(c => c.Images).WithOne(a => a.Group).HasForeignKey(a => a.GroupId);
             config.Property(c => c.Name).IsRequired();
             config.Property(c => c.Vision);

@@ -21,7 +21,6 @@ namespace ADAGroup.EIG.Repository
 
             modelBuilder.ApplyConfiguration(new GroupEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ActivityEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new OfficerEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ImageAssetEntityTypeConfiguration());
         }
     }

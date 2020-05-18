@@ -1,0 +1,54 @@
+﻿
+@{
+	ViewData["Title"] = "Upsert";
+}
+
+<style>
+	div#eigform {
+		padding: 50px 50px 50px 50px;
+	}
+
+	#eigheader1 {
+		padding-bottom: 20px;
+	}
+</style>
+
+
+<div id="eigform">
+	<h1 id="eigheader1">EIG Information</h1>
+	<form>
+		<div class="form-group">
+			<label for="groupName">Group Name</label>
+			<input type="text" class="form-control" id="groupName">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="groupMission">Mission</label>
+				<textarea class="form-control" id="groupMission" rows="3"></textarea>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="groupVision">Vision</label>
+				<textarea class="form-control" id="groupVision" rows="3"></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="groupAbout">About</label>
+			<textarea class="form-control" id="groupAbout" rows="5"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="groupContact">Contact Person(s)</label>
+			<input type="text" class="form-control" id="groupContact">
+		</div>
+		<div class="form-group">
+			<label for="groupLogo">Logo</label>
+			<div class="custom-file">
+				<input class="custom-file-input" id="groupLogo">
+				<label class="custom-file-label" for="customFile">Choose file</label>
+			</div>
+			<span  class="text-danger"></span>
+		</div>
+		<button class="btn btn-primary" type="submit">Submit Information</button>
+	</form>
+</div>
+
