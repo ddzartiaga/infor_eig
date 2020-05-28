@@ -13,17 +13,19 @@ namespace ADAGroup.EIG.Repository.Configurations
         {
             config.ToTable("Activities");
             config.HasKey(c => c.Id);
-            config.HasOne(c => c.Group).WithMany(i => i.Activities).HasForeignKey(c => c.GroupId);
+           
             config.Property(c => c.Title).IsRequired();
-            config.Property(c => c.Description);
+            config.Property(c => c.Details).IsRequired();
             config.Property(c => c.Location);
-            config.Property(c => c.Hosts);
-            config.Property(c => c.StartDateTime);
+            config.Property(c => c.StartDateTime).IsRequired();
             config.Property(c => c.EndDateTime);
-            config.Property(c => c.Location);
+            config.Property(c => c.ContactName);
+            config.Property(c => c.ContactInfo);
+            
             config.Property(c => c.DateCreated).ValueGeneratedOnAdd();
             config.Property(c => c.DateModified).ValueGeneratedOnUpdate();
 
+            config.HasOne(c => c.Group).WithMany(i => i.Activities).HasForeignKey(c => c.GroupId);
         }
     }
 }

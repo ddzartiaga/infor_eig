@@ -1,0 +1,42 @@
+<br />
+<h1 class="display-4">Manage Users and Interest Groups</h1>
+
+<br />
+<br />
+
+<h2>Users</h2>
+<app-admin-users-list></app-admin-users-list>
+
+<br />
+<br />
+
+<div class="row">
+
+	<div class="col-md"><p class="h4">Interest Groups</p></div>
+	<div class="col-md-1" style="text-align:center">
+		<a [routerLink]="['/new-eig/']">
+			ADD
+		</a>
+	</div>
+
+</div>
+<app-admin-group-list></app-admin-group-list>
+
+<br />
+<br />
+
+<div class="row">
+
+	<div class="col-md"><p class="h4">Events</p></div>
+	<div class="col-md-1" style="text-align:center">
+		<a [routerLink]="['/new-event/']">
+			ADD
+		</a>
+	</div>
+
+</div>
+<app-admin-events-list></app-admin-events-list>
+
+
+<br />
+<br />

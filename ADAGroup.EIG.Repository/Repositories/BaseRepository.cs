@@ -12,7 +12,7 @@ namespace ADAGroup.EIG.Repository.Repositories
     public abstract class BaseRepository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly DatabaseContext _dbContext;
-        private DbSet<T> _entities;
+        protected DbSet<T> _entities;
 
         public BaseRepository(DatabaseContext dbContext)
         {
@@ -51,6 +51,8 @@ namespace ADAGroup.EIG.Repository.Repositories
         {
             if (entity == null)
                 throw new ArgumentNullException("'entity' parameter is null");
+
+            _entities.Update(entity);
         }
     }
 }

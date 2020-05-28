@@ -7,5 +7,6 @@ namespace ADAGroup.EIG.Repository.Contracts
 {
     public interface IActivityRepository : IRepository<Activity>
     {
+        List<Activity> GetAllIncludingParent();
     }
 }

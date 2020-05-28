@@ -7,6 +7,10 @@ namespace ADAGroup.EIG.Service.Contracts
 {
     public interface IInterestGroupService
     {
+        List<GroupShortInfo> GetGroupsShortInfo();
+
+        InterestGroup GetGroupDetails(string groupId);
+
         List<InterestGroup> GetInterestGroups();
 
         void UpsertInterestGroup(InterestGroup group);

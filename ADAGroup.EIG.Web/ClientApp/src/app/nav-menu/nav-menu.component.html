@@ -26,18 +26,21 @@
                   <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
               </li>
               <li class="nav-item" [routerLinkActive]="['link-active']">
-                  <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+                  <a class="nav-link text-dark" [routerLink]="['/groups-page']">Interest Groups</a>
               </li>
               <li class="nav-item" [routerLinkActive]="['link-active']">
-                  <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+                  <a class="nav-link text-dark" [routerLink]="['/events-page']">Events</a>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item" [routerLinkActive]="['link-active']">
+                  <a class="nav-link text-dark" [routerLink]="['/admin']">Admin</a>
+              </li>
+              <!--<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                   <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">Accounts</a>
                       <a class="dropdown-item" asp-area="" asp-controller="EIG" asp-action="Upsert">Interest Groups</a>
                   </div>
-              </li>
+              </li>-->
           </ul>
       </div>
     </div>

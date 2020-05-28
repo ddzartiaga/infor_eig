@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace ADAGroup.EIG.Web.ViewModels
 {
-    public class EIGViewModel
+    public class GroupDetailsVM
     {
         public string GroupId { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        public string Mission { get; set; }
-
-        public string Vision { get; set; }
-
-        public string About { get; set; }
+        [Required]
+        public string GoalAndPurpose { get; set; }
 
         [Required]
-        public string ContactPerson { get; set; }
+        public string Mission { get; set; }
+
+        [Required]
+        public string Requirements { get; set; }
+        
+        public string Logo { get; set; }
     }
 }

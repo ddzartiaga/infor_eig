@@ -9,13 +9,13 @@ namespace ADAGroup.EIG.Domain
 
         public string Logo { get; set; }
 
+        public string GoalAndPurpose { get; set; }
+
         public string Mission { get; set; }
 
-        public string Vision { get; set; }
+        public string Requirements { get; set; }
 
-        public string About { get; set; }
-
-        public string Contacts { get; set; }
+        public ICollection<Contact> Contacts {get;set;}
 
         public ICollection<Activity> Activities { get; set; }
 

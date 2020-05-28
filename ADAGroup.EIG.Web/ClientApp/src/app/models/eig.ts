@@ -2,8 +2,7 @@
 export class EIG {
     groupId: string;
     name: string;
+    goalAndPurpose: string;
     mission: string;
-    vision: string;
-    about: string;
-    contactperson: string;
+    requirements: string;
 }

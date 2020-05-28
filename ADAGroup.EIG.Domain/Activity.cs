@@ -8,15 +8,17 @@ namespace ADAGroup.EIG.Domain
     {
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Details { get; set; }
 
         public string Location { get; set; }
-
-        public string Hosts { get; set; }
 
         public DateTime StartDateTime { get; set; }
 
         public DateTime EndDateTime { get; set; }
+
+        public string ContactName { get; set; }
+
+        public string ContactInfo { get; set; }
 
         public Guid GroupId { get; set; }
         public InterestGroup Group { get; set; }

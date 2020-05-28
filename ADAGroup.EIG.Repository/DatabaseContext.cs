@@ -20,6 +20,7 @@ namespace ADAGroup.EIG.Repository
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new GroupEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ContactEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ActivityEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ImageAssetEntityTypeConfiguration());
         }

@@ -2,45 +2,49 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 import { EIG } from '../models/eig';
+import { EIGShortInfo } from '../models/eig-short-info';
 
 @Injectable({
     providedIn: 'root'
 })
 export class EIGService {
 
-    myAppUrl: string;
-    myApiUrl: string;
+    EIGApiBaseUrl: string;
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json; charset=utf-8'
         })
     };
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-        this.myAppUrl = baseUrl;
-        this.myApiUrl = 'api/EIGs/';
+        this.EIGApiBaseUrl = baseUrl + 'api/groups/';
     }
 
-    getEIGs(): Observable<EIG[]> {
-        
-        return this.http.get<EIG[]>(this.myAppUrl + this.myApiUrl + 'All') 
+    getGroupsList(): Observable<EIGShortInfo[]> {
+
+        return this.http.get<EIGShortInfo[]>(this.EIGApiBaseUrl + 'GroupsList')
             .pipe(
                 retry(1),
                 catchError(this.errorHandler)
             );
     }
 
-    getEIG(groupId: number): Observable<EIG> {
-        return this.http.get<EIG>(this.myAppUrl + this.myApiUrl + groupId)
+    getEIGDetail(groupId: string): Observable<EIG> {
+        const url = this.EIGApiBaseUrl + 'Details/?groupId=' + groupId;
+ 
+
+        return this.http.get<EIG>(url)
             .pipe(
                 retry(1),
                 catchError(this.errorHandler)
             );
     }
 
-    saveEIG(EIG): Observable<EIG> {
-        return this.http.post<EIG>(this.myAppUrl + this.myApiUrl, JSON.stringify(EIG), this.httpOptions)
+    saveEIGDetails(EIG): Observable<EIG> {
+        const url = this.EIGApiBaseUrl + 'Upsert';
+        console.log(JSON.stringify(EIG));
+
+        return this.http.post<EIG>(url, JSON.stringify(EIG), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.errorHandler)
@@ -48,7 +52,7 @@ export class EIGService {
     }
 
     updateEIG(groupId: number, EIG): Observable<EIG> {
-        return this.http.put<EIG>(this.myAppUrl + this.myApiUrl + groupId, JSON.stringify(EIG), this.httpOptions)
+        return this.http.put<EIG>(this.EIGApiBaseUrl + groupId, JSON.stringify(EIG), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.errorHandler)
@@ -56,7 +60,7 @@ export class EIGService {
     }
 
     deleteEIG(groupId: number): Observable<EIG> {
-        return this.http.delete<EIG>(this.myAppUrl + this.myApiUrl + groupId)
+        return this.http.delete<EIG>(this.EIGApiBaseUrl + groupId)
             .pipe(
                 retry(1),
                 catchError(this.errorHandler)

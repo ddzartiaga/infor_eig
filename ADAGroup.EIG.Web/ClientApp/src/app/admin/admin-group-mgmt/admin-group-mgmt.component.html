@@ -1,0 +1,138 @@
+<br />
+<h1>{{actionType == 'add' ? "Add" : "Edit"}} Interest Group</h1>
+
+<br />
+
+<div class="card">
+	<div class="card-header">Group Details</div>
+	<div class="card-body">
+		<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+			<div class="row">
+				<!--<div class="col-sm-12 col-md-6">
+					<div class="form-group">
+						<label for="goalPurpose">Goal &amp; Purpose</label>
+						<textarea formControlName="purpose" class="form-control" id="goalPurpose" rows="5"></textarea>
+						<span class="text-danger ml-3" *ngIf="title.invalid && formDir.submitted">
+							Title is required.
+						</span>
+					</div>
+				</div>-->
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input class="form-control" type="text" formControlName="name" id="name">
+						<!--<span class="text-danger ml-3" *ngIf="title.invalid && formDir.submitted">
+							Title is required.
+						</span>-->
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group">
+						<label for="goalPurpose">Goal &amp; Purpose</label>
+						<textarea formControlName="purpose" class="form-control" id="goalPurpose" rows="5"></textarea>
+						<!--<span class="text-danger ml-3" *ngIf="title.invalid && formDir.submitted">
+							Title is required.
+						</span>-->
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group">
+						<label for="mission">Mission</label>
+						<textarea formControlName="mission" class="form-control" id="mission" rows="5"></textarea>
+						<!--<span class="text-danger ml-3" *ngIf="title.invalid && formDir.submitted">
+							Title is required.
+						</span>-->
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<div class="form-group">
+						<label for="requirements">Requirements</label>
+						<textarea formControlName="requirements" class="form-control" id="requirements" rows="5"></textarea>
+						<!--<span class="text-danger ml-3" *ngIf="title.invalid && formDir.submitted">
+							Title is required.
+						</span>-->
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success float-right" style="margin: 5px;">Save</button>
+				<button class="btn btn-secondary float-right" (click)="cancel()" style="margin: 5px;">Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>
+<br />
+<div class="card">
+	<div class="card-header">Contact Persons</div>
+	<div class="card-body">
+		<form>
+			<div class="form-row align-items-center">
+				<div class="col">
+					<label class="sr-only" for="inlineFormInputGroup">Name</label>
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<div class="input-group-text">Name:</div>
+						</div>
+						<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Name">
+					</div>
+				</div>
+				<div class="col">
+					<label class="sr-only" for="inlineFormInputGroup">Designation</label>
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<div class="input-group-text">Designation:</div>
+						</div>
+						<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Designation">
+					</div>
+				</div>
+				<div class="col">
+					<label class="sr-only" for="inlineFormInputGroup">Email</label>
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<div class="input-group-text">Email:</div>
+						</div>
+						<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email..">
+					</div>
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-2">Submit</button>
+				</div>
+			</div>
+		</form>
+		<table class="table table-hover table-borderless">
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Designation</th>
+					<th scope="col">Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<td colspan="2">Larry the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<br />
+<br />
+

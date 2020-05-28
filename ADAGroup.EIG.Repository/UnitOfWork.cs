@@ -7,18 +7,15 @@ namespace ADAGroup.EIG.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _databaseContext;
-        private IEIGRepository _eigRepo;
-        private IActivityRepository _activityRepo;
+        public IEIGRepository EIGRepo { get; }
+        public IActivityRepository ActivityRepo { get; }
 
         public UnitOfWork(DatabaseContext dbContext)
         {
             _databaseContext = dbContext;
+            EIGRepo = new EIGRepository(_databaseContext);
+            ActivityRepo = new ActivityRepository(_databaseContext);
         }
-
-
-        public IEIGRepository EIGRepo => _eigRepo ?? new EIGRepository(_databaseContext);
-
-        public IActivityRepository ActivityRepo => _activityRepo ?? new ActivityRepository(_databaseContext);
 
         public void Commit()
         {

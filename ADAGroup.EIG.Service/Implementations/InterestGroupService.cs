@@ -17,12 +17,52 @@ namespace ADAGroup.EIG.Service.Implementations
             _unitOfWork = uow;
         }
 
+        public List<GroupShortInfo> GetGroupsShortInfo()
+        {
+            try
+            {
+                var infos = new List<GroupShortInfo>();
+
+                var list = _unitOfWork.EIGRepo.GetAll().ToList();
+                list.ForEach(g => infos.Add(new GroupShortInfo()
+                {
+                    GroupId = g.Id,
+                    Name = g.Name,
+                    Logo = g.Logo
+                }));
+
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                //TODO: Log error
+                throw ex;
+            }
+        }
+
+        public InterestGroup GetGroupDetails(string groupId)
+        {
+            try
+            {
+                Guid gId;
+
+                if (!Guid.TryParse(groupId, out gId)) throw new Exception("Invalid Group ID");
+                    
+                return _unitOfWork.EIGRepo.Get(gId);
+            }
+            catch(Exception ex)
+            {
+                // Log exception;
+                throw ex;
+            }
+        }
+
         public List<InterestGroup> GetInterestGroups()
         {
             try
             {
                 return _unitOfWork.EIGRepo.GetAll().ToList();
-            } 
+            }
             catch (Exception ex)
             {
                 return new List<InterestGroup>();
@@ -33,7 +73,7 @@ namespace ADAGroup.EIG.Service.Implementations
         {
             try
             {
-                if(group.Id == Guid.Empty)
+                if (group.Id == Guid.Empty)
                 {
                     // Insert new record
                     group.DateCreated = DateTime.UtcNow;
@@ -44,14 +84,15 @@ namespace ADAGroup.EIG.Service.Implementations
                     group.DateModified = DateTime.UtcNow;
                     _unitOfWork.EIGRepo.Update(group);
                 }
-                
+
                 _unitOfWork.Commit();
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 // TODO: Log error
+                throw ex;
             }
-            
+
         }
 
         public void SetStatus()
@@ -59,6 +100,6 @@ namespace ADAGroup.EIG.Service.Implementations
             throw new NotImplementedException();
         }
 
-        
+
     }
 }

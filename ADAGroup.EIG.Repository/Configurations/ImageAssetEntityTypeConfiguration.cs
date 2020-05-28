@@ -13,9 +13,18 @@ namespace ADAGroup.EIG.Repository.Configurations
         {
             config.ToTable("ImageAssets");
             config.HasKey(c => c.Id);
-            config.HasOne(c => c.Group).WithMany(i => i.Images).HasForeignKey(c => c.GroupId);
+
+            config.Property(c => c.Label).IsRequired();
+            config.Property(c => c.Content);
+            config.Property(c => c.Location);
+            config.Property(c => c.FileType);
+            config.Property(c => c.Classification);
+            
+            
             config.Property(c => c.DateCreated).ValueGeneratedOnAdd();
             config.Property(c => c.DateModified).ValueGeneratedOnUpdate();
+
+            config.HasOne(c => c.Group).WithMany(i => i.Images).HasForeignKey(c => c.GroupId);
 
         }
     }
