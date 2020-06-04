@@ -1,0 +1,21 @@
+
+<div class="row" *ngFor="let i of itemInRowRange">
+	<div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let item of items | async | slice: i*3 : i*3 + 3">
+		<a [routerLink]="['/view-group']" style="text-decoration:none">
+			<div class="card h-100">
+				<img class="card-img-top" src="http://placehold.it/700x400" alt="">
+				<div class="card-body">
+					<h4 class="card-title">
+						{{item}}
+					</h4>
+					<p class="card-text" style="color: black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+
+				</div>
+				<div class="card-footer">
+					<a href="#" class="btn btn-primary">Learn More</a>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+

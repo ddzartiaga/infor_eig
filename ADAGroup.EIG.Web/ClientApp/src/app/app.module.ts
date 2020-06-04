@@ -18,6 +18,7 @@ import { GroupsPageComponent } from './groups-page/groups-page.component';
 import { EventsPageComponent } from './events-page/events-page.component';
 import { ViewEventDetailsComponent } from './view-event-details/view-event-details.component';
 import { ViewGroupDetailsComponent } from './view-group-details/view-group-details.component';
+import { GroupsListCardComponent } from './groups-list-card/groups-list-card.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { ViewGroupDetailsComponent } from './view-group-details/view-group-detai
         EventsPageComponent,
         ViewEventDetailsComponent,
         ViewGroupDetailsComponent,
+        GroupsListCardComponent,
 
     ],
     imports: [
