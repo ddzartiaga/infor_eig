@@ -7,6 +7,8 @@ namespace ADAGroup.EIG.Domain
     {
         public string Name { get; set; }
 
+        public string Logo { get; set; }
+
         public string GoalAndPurpose { get; set; }
 
         public string Mission { get; set; }
