@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ADAGroup.EIG.Common
 {
-    public class Class1
+    public enum ImageType
     {
+        GroupLogo,
+        GroupImage,
     }
 }

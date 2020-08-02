@@ -19,8 +19,6 @@ namespace ADAGroup.EIG.Repository.Configurations
             config.Property(c => c.Location);
             config.Property(c => c.StartDateTime).IsRequired();
             config.Property(c => c.EndDateTime);
-            config.Property(c => c.ContactName);
-            config.Property(c => c.ContactInfo);
             
             config.Property(c => c.DateCreated).ValueGeneratedOnAdd();
             config.Property(c => c.DateModified).ValueGeneratedOnUpdate();

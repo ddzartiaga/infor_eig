@@ -7,19 +7,15 @@ namespace ADAGroup.EIG.Domain
     {
         public string Name { get; set; }
 
-        public string Logo { get; set; }
-
         public string GoalAndPurpose { get; set; }
 
         public string Mission { get; set; }
 
-        public string Requirements { get; set; }
-
-        public ICollection<Contact> Contacts {get;set;}
+        public ICollection<FAQ> FAQs { get; set; }
 
         public ICollection<Activity> Activities { get; set; }
 
-        public ICollection<ImageAsset> Images { get; set; }
+        public ICollection<Image> Images { get; set; }
 
     }
 }

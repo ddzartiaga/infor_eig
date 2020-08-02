@@ -13,6 +13,8 @@ export class GroupsListCardComponent implements OnInit {
     itemInRowRange = Array.from(Array(this.itemsInRow).keys());
     items = of(this.list);
 
+    name: string = 'Hello';
+
     constructor() { }
 
     ngOnInit() {

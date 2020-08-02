@@ -16,11 +16,8 @@ namespace ADAGroup.EIG.Domain
 
         public DateTime EndDateTime { get; set; }
 
-        public string ContactName { get; set; }
-
-        public string ContactInfo { get; set; }
-
         public Guid GroupId { get; set; }
+
         public InterestGroup Group { get; set; }
     }
 }

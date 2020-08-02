@@ -19,6 +19,8 @@ import { EventsPageComponent } from './events-page/events-page.component';
 import { ViewEventDetailsComponent } from './view-event-details/view-event-details.component';
 import { ViewGroupDetailsComponent } from './view-group-details/view-group-details.component';
 import { GroupsListCardComponent } from './groups-list-card/groups-list-card.component';
+import { InterestGroupViewComponent } from './interest-group-view/interest-group-view.component';
+import { InterestGroupUpsertComponent } from './interest-group-upsert/interest-group-upsert.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import { GroupsListCardComponent } from './groups-list-card/groups-list-card.com
         ViewEventDetailsComponent,
         ViewGroupDetailsComponent,
         GroupsListCardComponent,
+        InterestGroupViewComponent,
+        InterestGroupUpsertComponent,
 
     ],
     imports: [
@@ -44,7 +48,7 @@ import { GroupsListCardComponent } from './groups-list-card/groups-list-card.com
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
+            { path: '', component: InterestGroupUpsertComponent , pathMatch: 'full' },
             { path: 'groups-page', component: GroupsPageComponent },
             { path: 'view-group', component: ViewGroupDetailsComponent },
             { path: 'events-page', component: EventsPageComponent },
@@ -54,6 +58,7 @@ import { GroupsListCardComponent } from './groups-list-card/groups-list-card.com
             { path: 'update-eig/:groupId', component: AdminGroupMgmtComponent },
             { path: 'new-event', component: AdminEventMgmtComponent },
             { path: 'update-event/:eventId', component: AdminEventMgmtComponent },
+            { path: 'interest-group', component: InterestGroupViewComponent },
         ]),
     ],
     providers: [EIGService],

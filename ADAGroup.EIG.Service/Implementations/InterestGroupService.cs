@@ -28,7 +28,6 @@ namespace ADAGroup.EIG.Service.Implementations
                 {
                     GroupId = g.Id,
                     Name = g.Name,
-                    Logo = g.Logo
                 }));
 
                 return infos;

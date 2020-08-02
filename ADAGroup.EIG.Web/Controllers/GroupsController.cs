@@ -60,8 +60,6 @@ namespace ADAGroup.EIG.Web.Controllers
                     Name = details.Name,
                     GoalAndPurpose = details.GoalAndPurpose,
                     Mission = details.Mission,
-                    Requirements = details.Requirements,
-                    Logo = details.Logo,
                 });
             }
             catch (Exception ex)
@@ -83,8 +81,6 @@ namespace ADAGroup.EIG.Web.Controllers
                     Name = eig.Name,
                     GoalAndPurpose = eig.GoalAndPurpose,
                     Mission = eig.Mission,
-                    Requirements = eig.Requirements,
-                    Logo = eig.Logo,
                 });
 
                 return Ok();
