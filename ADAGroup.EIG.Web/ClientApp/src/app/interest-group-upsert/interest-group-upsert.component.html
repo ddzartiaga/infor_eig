@@ -34,9 +34,39 @@ The main purpose of this club is to offer an avenue for vocalists and musicians,
 
 <hr />
 <!--FAQs -->
+<h2>Frequently Asked Questions</h2>
+<br />
 <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-	<div class="card ">
-		<div class="card-header bg-danger" role="tab" id="headingOne">
+	<div class="card border-info">
+		<div class="card-header bg-info " role="tab" id="newFAQHeading">
+			<h5 class="mb-0">
+				<a style="color: white" data-toggle="collapse" data-parent="#accordion" href="#newFAQ" aria-expanded="true" aria-controls="collapseOne">Add Frequently Asked Question</a>
+			</h5>
+		</div>
+
+		<div id="newFAQ" class="collapse hide" role="tabpanel" aria-labelledby="newFAQHeading">
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label for="question"><b>Question:</b></label>
+						<input type="text" class="form-control" id="question" placeholder="Enter question here...">
+					</div>
+					<div class="form-group">
+						<label for="answer"><b>Answer:</b></label>
+						<textarea class="form-control" id="answer" rows="5" placeholder="Enter answer here..."></textarea>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-info float-right">ADD FAQ</button>
+					</div>
+				</form>
+				<br />
+			</div>
+		</div>
+	</div>
+</div>
+<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="card border-danger">
+		<div class="card-header bg-danger " role="tab" id="headingOne">
 			<h5 class="mb-0">
 				<a style="color: white" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What it takes to be a member of the group?</a>
 			</h5>
@@ -48,10 +78,11 @@ The main purpose of this club is to offer an avenue for vocalists and musicians,
 			</div>
 		</div>
 	</div>
+	<br />
 	<div class="card border-danger">
-		<div class="card-header" role="tab" id="headingTwo">
+		<div class="card-header bg-danger" role="tab" id="headingTwo">
 			<h5 class="mb-0">
-				<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				<a style="color: white" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 					Who should I contact?
 				</a>
 			</h5>
@@ -65,30 +96,71 @@ The main purpose of this club is to offer an avenue for vocalists and musicians,
 
 </div>
 
-<br />
+<hr />
 <!-- Upcoming Events -->
+<h2>Group Activities</h2>
+<br />
 <app-events-page></app-events-page>
 
-<br />
+<hr />
 <!--Galleries -->
 <h2>Galleries</h2>
-<div class="row">
-	<div class="col-lg-2 col-sm-4 mb-4">
-		<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-	</div>
-	<div class="col-lg-2 col-sm-4 mb-4">
-		<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-	</div>
-	<div class="col-lg-2 col-sm-4 mb-4">
-		<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-	</div>
-	<div class="col-lg-2 col-sm-4 mb-4">
-		<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-	</div>
-	<div class="col-lg-2 col-sm-4 mb-4">
-		<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-	</div>
-	<div class="col-lg-2 col-sm-4 mb-4">
-		<img class="img-fluid" src="http://placehold.it/500x300" alt="">
+<br />
+<div class="gal">
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+	<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt=""><img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+	<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
+
+</div>
+
+
+<div id="modalGallery" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalGalleryLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<img class="js-modal-image" src="" alt="..." />
+			</div>
+		</div>
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+	(function () {
+		$(document).on("click", ".click-to-expand", function () {
+			var imageSrc = $(this).parents(".image-grid").find("img").attr("src");
+			$(".js-modal-image").attr("src", imageSrc);
+		});
+	})();
+</script>
