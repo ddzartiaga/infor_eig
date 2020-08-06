@@ -13,7 +13,7 @@ namespace ADAGroup.EIG.Service.Contracts
 
         List<InterestGroup> GetInterestGroups();
 
-        void UpsertInterestGroup(InterestGroup group);
+        Guid UpsertInterestGroup(InterestGroup group);
 
         void SetStatus();
     }

@@ -7,17 +7,17 @@ using System.Text;
 
 namespace ADAGroup.EIG.Repository.Configurations
 {
-    public class ImageAssetEntityTypeConfiguration : IEntityTypeConfiguration<Image>
+    public class FAQEntityTypeConfiguration : IEntityTypeConfiguration<FAQ>
     {
-        public void Configure(EntityTypeBuilder<Image> config)
+        public void Configure(EntityTypeBuilder<FAQ> config)
         {
-            config.ToTable("ImageAssets");
+            config.ToTable("FAQs");
             config.HasKey(c => c.Id);
 
-            config.Property(c => c.Label).IsRequired();
-            config.Property(c => c.Content);
-            config.Property(c => c.Location);
-            config.Property(c => c.FileType);
+            config.Property(c => c.RefId).IsRequired();
+            config.Property(c => c.Question).IsRequired();
+            config.Property(c => c.Answer).IsRequired();
+            config.Property(c => c.EntityType).IsRequired();
             
             
             config.Property(c => c.DateCreated).ValueGeneratedOnAdd();

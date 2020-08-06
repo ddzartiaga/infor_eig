@@ -15,11 +15,9 @@ export class AdminGroupListComponent implements OnInit {
     constructor(private eigService: EIGService) { }
 
     ngOnInit() {
-        this.getGroupsList();
+        
     }
 
-    getGroupsList() {
-        this.groupsList$ = this.eigService.getGroupsList();
-    }
+    
 
 }

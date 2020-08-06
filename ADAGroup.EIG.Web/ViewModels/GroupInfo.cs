@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ADAGroup.EIG.Domain
+namespace ADAGroup.EIG.Web.ViewModels
 {
-    public class InterestGroup : BaseEntity
+    public class GroupInfo
     {
+        public string GroupId { get; set; }
+
         public string Name { get; set; }
 
         public string LogoFileName { get; set; }
@@ -12,12 +16,5 @@ namespace ADAGroup.EIG.Domain
         public string GoalAndPurpose { get; set; }
 
         public string Mission { get; set; }
-
-        public ICollection<FAQ> FAQs { get; set; }
-
-        public ICollection<Activity> Activities { get; set; }
-
-        public ICollection<Image> Images { get; set; }
-
     }
 }

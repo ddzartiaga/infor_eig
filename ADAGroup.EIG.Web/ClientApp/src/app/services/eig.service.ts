@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { EIG } from '../models/eig';
+import { InterestGroup } from '../models/eig';
 import { EIGShortInfo } from '../models/eig-short-info';
 
 @Injectable({
@@ -20,54 +20,50 @@ export class EIGService {
         this.EIGApiBaseUrl = baseUrl + 'api/groups/';
     }
 
-    getGroupsList(): Observable<EIGShortInfo[]> {
 
-        return this.http.get<EIGShortInfo[]>(this.EIGApiBaseUrl + 'GroupsList')
-            .pipe(
-                retry(1),
-                catchError(this.errorHandler)
-            );
-    }
-
-    getEIGDetail(groupId: string): Observable<EIG> {
+    getGroupInfo(groupId: string): Observable<InterestGroup> {
         const url = this.EIGApiBaseUrl + 'Details/?groupId=' + groupId;
- 
 
-        return this.http.get<EIG>(url)
+        return this.http.get<InterestGroup>(url).pipe(retry(1), catchError(this.errorHandler));
+    }
+
+    upsertGroup(group: InterestGroup): Observable<string> {
+        let url: string = '';
+
+        if (group.groupId == null) {
+            url = this.EIGApiBaseUrl + 'NewGroup';
+            console.log(url);
+            return this.http.post<string>(url, JSON.stringify(group), this.httpOptions)
+                .pipe(
+                    retry(1),
+                    catchError(this.errorHandler)
+                );
+        } else {
+            url = this.EIGApiBaseUrl + 'UpdateGroup';
+            console.log(url);
+            return this.http.put<string>(url, JSON.stringify(group), this.httpOptions)
+                .pipe(
+                    retry(1),
+                    catchError(this.errorHandler)
+                );
+        }
+    }
+
+    addFAQ(InterestGroup): Observable<InterestGroup> {
+        const url = this.EIGApiBaseUrl + 'NewGroup';
+        console.log(JSON.stringify(InterestGroup));
+
+        return this.http.post<InterestGroup>(url, JSON.stringify(InterestGroup), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.errorHandler)
             );
     }
 
-    saveEIGDetails(EIG): Observable<EIG> {
-        const url = this.EIGApiBaseUrl + 'Upsert';
-        console.log(JSON.stringify(EIG));
-
-        return this.http.post<EIG>(url, JSON.stringify(EIG), this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.errorHandler)
-            );
-    }
-
-    updateEIG(groupId: number, EIG): Observable<EIG> {
-        return this.http.put<EIG>(this.EIGApiBaseUrl + groupId, JSON.stringify(EIG), this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.errorHandler)
-            );
-    }
-
-    deleteEIG(groupId: number): Observable<EIG> {
-        return this.http.delete<EIG>(this.EIGApiBaseUrl + groupId)
-            .pipe(
-                retry(1),
-                catchError(this.errorHandler)
-            );
-    }
 
     errorHandler(error) {
+        console.log(error);
+
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
             // Get client-side error
@@ -77,6 +73,7 @@ export class EIGService {
             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
         console.log(errorMessage);
+
         return throwError(errorMessage);
     }
 }

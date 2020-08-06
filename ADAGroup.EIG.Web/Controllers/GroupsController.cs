@@ -54,10 +54,11 @@ namespace ADAGroup.EIG.Web.Controllers
             {
                 var details = _groupService.GetGroupDetails(groupId);
 
-                return Ok(new GroupDetailsVM()
+                return Ok(new GroupInfo()
                 {
                     GroupId = details.Id.ToString(),
                     Name = details.Name,
+                    LogoFileName = details.LogoFileName,
                     GoalAndPurpose = details.GoalAndPurpose,
                     Mission = details.Mission,
                 });
@@ -69,21 +70,15 @@ namespace ADAGroup.EIG.Web.Controllers
         }
 
         [HttpPost]
-        [ActionName("Upsert")]
-        public IActionResult Upsert([FromBody] GroupDetailsVM eig)
+        [ActionName("NewGroup")]
+        public IActionResult NewGroup([FromBody] GroupInfo group)
         {
+
+            // upsert eig record
             try
             {
-                // upsert eig record
-                _groupService.UpsertInterestGroup(new InterestGroup()
-                {
-                    Id = string.IsNullOrEmpty(eig.GroupId) ? Guid.Empty : Guid.Parse(eig.GroupId),
-                    Name = eig.Name,
-                    GoalAndPurpose = eig.GoalAndPurpose,
-                    Mission = eig.Mission,
-                });
-
-                return Ok();
+                var gId = UpsertGroup(group);
+                return Ok(gId);
             }
             catch (Exception ex)
             {
@@ -91,6 +86,36 @@ namespace ADAGroup.EIG.Web.Controllers
                 return BadRequest();
             }
 
+        }
+
+        [HttpPut]
+        [ActionName("UpdateGroup")]
+        public IActionResult UpdateGroup([FromBody] GroupInfo group)
+        {
+            try
+            {
+                var gId = UpsertGroup(group);
+                return Ok(gId);
+            }
+            catch (Exception ex)
+            {
+                //TODO: Return error code
+                return BadRequest();
+            }
+
+        }
+
+        private Guid UpsertGroup(GroupInfo group)
+        {
+            // upsert eig record
+            return _groupService.UpsertInterestGroup(new InterestGroup()
+            {
+                Id = string.IsNullOrEmpty(group.GroupId) ? Guid.Empty : Guid.Parse(group.GroupId),
+                Name = group.Name,
+                LogoFileName = group.LogoFileName,
+                GoalAndPurpose = group.GoalAndPurpose,
+                Mission = group.Mission,
+            });
         }
     }
 }

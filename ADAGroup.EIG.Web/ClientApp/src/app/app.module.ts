@@ -48,7 +48,7 @@ import { InterestGroupUpsertComponent } from './interest-group-upsert/interest-g
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
-            { path: '', component: InterestGroupUpsertComponent , pathMatch: 'full' },
+            { path: '', component: HomeComponent , pathMatch: 'full' },
             { path: 'groups-page', component: GroupsPageComponent },
             { path: 'view-group', component: ViewGroupDetailsComponent },
             { path: 'events-page', component: EventsPageComponent },
@@ -59,6 +59,9 @@ import { InterestGroupUpsertComponent } from './interest-group-upsert/interest-g
             { path: 'new-event', component: AdminEventMgmtComponent },
             { path: 'update-event/:eventId', component: AdminEventMgmtComponent },
             { path: 'interest-group', component: InterestGroupViewComponent },
+
+            { path: 'interest-group-upsert/:groupId', component: InterestGroupUpsertComponent },
+            { path: 'interest-group-upsert', component: InterestGroupUpsertComponent },
         ]),
     ],
     providers: [EIGService],

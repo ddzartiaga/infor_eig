@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EIGService } from '../../services/eig.service';
-import { EIG } from '../../models/eig';
+import { InterestGroup } from '../../models/eig';
 
 @Component({
     selector: 'app-admin-group-mgmt',
@@ -21,7 +21,7 @@ export class AdminGroupMgmtComponent implements OnInit {
 
 
     groupId: string;
-    exRecord: EIG;
+    exRecord: InterestGroup;
     errorMessage: string;
 
 
@@ -59,13 +59,13 @@ export class AdminGroupMgmtComponent implements OnInit {
             this.actionType = 'edit';
 
             // get the group details and set the form
-            this.eigService.getEIGDetail(this.groupId).subscribe(data => (
-                    this.exRecord = data,
-                    this.form.controls[this.nameCtrl].setValue(data.name),
-                    this.form.controls[this.purposeCtrl].setValue(data.goalAndPurpose),
-                    this.form.controls[this.missionCtrl].setValue(data.mission),
-                    this.form.controls[this.reqCtrl].setValue(data.requirements)
-                ));
+            //this.eigService.getEIGDetail(this.groupId).subscribe(data => (
+            //        this.exRecord = data,
+            //        this.form.controls[this.nameCtrl].setValue(data.name),
+            //        this.form.controls[this.purposeCtrl].setValue(data.goalAndPurpose),
+            //        this.form.controls[this.missionCtrl].setValue(data.mission),
+            //        this.form.controls[this.reqCtrl].setValue(data.requirements)
+            //    ));
         }
     }
 
@@ -74,19 +74,18 @@ export class AdminGroupMgmtComponent implements OnInit {
             return;
         }
 
-        let igroup: EIG = {
+        let igroup: InterestGroup = {
             groupId: this.groupId,
             name: this.form.get(this.nameCtrl).value,
             goalAndPurpose: this.form.get(this.purposeCtrl).value,
             mission: this.form.get(this.missionCtrl).value,
-            requirements: this.form.get(this.reqCtrl).value,
         }
 
         console.log('Saving EIG details..');
 
-        this.eigService.saveEIGDetails(igroup).subscribe(data => {
-            this.router.navigate(['/admin']);
-        });
+        //this.eigService.saveEIGDetails(igroup).subscribe(data => {
+        //    this.router.navigate(['/admin']);
+        //});
     }
 
     cancel() {

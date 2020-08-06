@@ -8,10 +8,10 @@ namespace ADAGroup.EIG.Domain
     {
         public Guid RefId { get; set; }
 
-        public string Type { get; set; }
+        public string EntityType { get; set; }
 
-        public string Label { get; set; }
+        public string Question { get; set; }
 
-        public string Content { get; set; }
+        public string Answer { get; set; }
     }
 }

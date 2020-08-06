@@ -2,7 +2,6 @@
 <br />
 <!-- Group Main Information -->
 <div class="row">
-
 	<div class="col-md-6">
 		<div id="logo-container">
 			<img id="logo-img" class="img-fluid" src="assets/img/InforManila-Musiko-Colored.png" alt="http://placehold.it/750x500">
@@ -13,20 +12,18 @@
 	</div>
 
 	<div class="col-md-6">
-		<form>
+		<form [formGroup]="groupInfoForm" (ngSubmit)="saveInfo()" #formDir="ngForm" novalidate>
 			<div class="form-group">
 				<label for="name"><b>Name:</b></label>
-				<input type="text" class="form-control" id="name" value="Infor Musiko" placeholder="Group Name">
+				<input type="text" formControlName="name" class="form-control" id="name" placeholder="Group name.">
 			</div>
 			<div class="form-group">
 				<label for="goalPurpose"><b>Goal &amp; Purpose</b></label>
-				<textarea class="form-control" id="goalPurpose" rows="5">Infor Musiko is one of the Employee Interest Groups composed of musically-gifted members that use music as a tool in the promotion of work-life balance.
-The main purpose of this club is to offer an avenue for vocalists and musicians, or any other Infor employee interested in music, to hone and showcase their talents within the company by collaborating with other members of the group, and to provide performance opportunities for the members at various Infor events.
-					</textarea>
+				<textarea formControlName="goalpurpose" class="form-control" id="goalPurpose" rows="5" placeholder="The goal and purpose of the group."></textarea>
 			</div>
 			<div class="form-group">
-				<label for="goalPurpose"><b>Mission</b></label>
-				<textarea class="form-control" id="goalPurpose" rows="3">Infor Musiko’s mission is to create, provide, promote and expand work-life balance through music for all of its members</textarea>
+				<label for="mission"><b>Mission</b></label>
+				<textarea formControlName="mission" class="form-control" id="mission" rows="3" placeholder="The mission statement."></textarea>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-outline-info float-right">Save Information</button>
@@ -35,127 +32,134 @@ The main purpose of this club is to offer an avenue for vocalists and musicians,
 	</div>
 </div>
 <!-- /.row -->
-
-<hr />
-<!--FAQs -->
-<h2>Frequently Asked Questions</h2>
-<br />
-<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-	<div class="card border-info">
-		<div class="card-header bg-info " role="tab" id="newFAQHeading">
-			<h5 class="mb-0">
-				<a style="color: white" data-toggle="collapse" data-parent="#accordion" href="#newFAQ" aria-expanded="true" aria-controls="collapseOne">Add Frequently Asked Question</a>
-			</h5>
-		</div>
-
-		<div id="newFAQ" class="collapse hide" role="tabpanel" aria-labelledby="newFAQHeading">
-			<div class="card-body">
-				<form>
-					<div class="form-group">
-						<label for="question"><b>Question:</b></label>
-						<input type="text" class="form-control" id="question" placeholder="Enter question here...">
-					</div>
-					<div class="form-group">
-						<label for="answer"><b>Answer:</b></label>
-						<textarea class="form-control" id="answer" rows="5" placeholder="Enter answer here..."></textarea>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-info float-right">ADD FAQ</button>
-					</div>
-				</form>
-				<br />
-			</div>
-		</div>
-	</div>
-</div>
-<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-	<div class="card border-danger">
-		<div class="card-header bg-danger " role="tab" id="headingOne">
-			<h5 class="mb-0">
-				<a style="color: white" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What it takes to be a member of the group?</a>
-			</h5>
-		</div>
-
-		<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-			<div class="card-body">
-				Infor employees who are not only musically-gifted but also those who expresses a strong interest in unravelling or developing their untapped musical skills, either as vocalists or instrumentalists, or both.
-			</div>
-		</div>
-	</div>
+<div *ngIf="pageMode != 'new'">
+	<hr />
+	<!--FAQs -->
+	<h2>Frequently Asked Questions</h2>
 	<br />
-	<div class="card border-danger">
-		<div class="card-header bg-danger" role="tab" id="headingTwo">
-			<h5 class="mb-0">
-				<a style="color: white" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					Who should I contact?
-				</a>
-			</h5>
-		</div>
-		<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-			<div class="card-body">
-				Contact Edgar Moskaira edgar.moskaira@infor.com
+	<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+		<div class="card border-info">
+			<div class="card-header bg-info " role="tab" id="newFAQHeading">
+				<h5 class="mb-0">
+					<a style="color: white" data-toggle="collapse" data-parent="#accordion" href="#newFAQ" aria-expanded="true" aria-controls="collapseOne">Add Frequently Asked Question</a>
+				</h5>
+			</div>
+
+			<div id="newFAQ" class="collapse hide" role="tabpanel" aria-labelledby="newFAQHeading">
+				<div class="card-body">
+					<form>
+						<div class="form-group">
+							<label for="question"><b>Question:</b></label>
+							<input type="text" class="form-control" id="question" placeholder="Enter question here...">
+						</div>
+						<div class="form-group">
+							<label for="answer"><b>Answer:</b></label>
+							<textarea class="form-control" id="answer" rows="5" placeholder="Enter answer here..."></textarea>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-info float-right">ADD FAQ</button>
+						</div>
+					</form>
+					<br />
+				</div>
 			</div>
 		</div>
+	</div>
+	<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+		<div class="card border-danger">
+			<div class="card-header bg-danger " role="tab" id="headingOne">
+				<h5 class="mb-0">
+					<a style="color: white" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What it takes to be a member of the group?</a>
+				</h5>
+			</div>
+
+			<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+				<div class="card-body">
+					Infor employees who are not only musically-gifted but also those who expresses a strong interest in unravelling or developing their untapped musical skills, either as vocalists or instrumentalists, or both.
+				</div>
+			</div>
+		</div>
+		<br />
+		<div class="card border-danger">
+			<div class="card-header bg-danger" role="tab" id="headingTwo">
+				<h5 class="mb-0">
+					<a style="color: white" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						Who should I contact?
+					</a>
+				</h5>
+			</div>
+			<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+				<div class="card-body">
+					Contact Edgar Moskaira edgar.moskaira@infor.com
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 </div>
 
-<hr />
-<!-- Upcoming Events -->
-<h2>Group Activities</h2>
-<br />
-<app-events-page></app-events-page>
-
-<hr />
-<!--Galleries -->
-<h2>Galleries</h2>
-<br />
-<div class="gal">
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-
-	<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-
-	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
-
-
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-
-	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt=""><img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
-
-	<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
-
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
-	<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
-
+<div *ngIf="pageMode != 'new'">
+	<hr />
+	<!-- Upcoming Events -->
+	<h2>Group Activities</h2>
+	<br />
+	<app-events-page></app-events-page>
 </div>
 
+<div *ngIf="pageMode != 'new'">
+	<hr />
+	<!--Galleries -->
+	<h2>Galleries</h2>
+	<br />
+	<div class="gal">
 
-<div id="modalGallery" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalGalleryLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<img class="js-modal-image" src="" alt="..." />
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+		<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
+
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+		<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+
+
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
+
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+		<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt=""><img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+		<img src="https://preview.ibb.co/mysOxk/3.jpg" alt="">
+
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/i0PmHk/1.jpg" alt="">
+		<img src="https://preview.ibb.co/mWpE3Q/2.jpg" alt="">
+
+	</div>
+
+
+	<div id="modalGallery" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalGalleryLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<img class="js-modal-image" src="" alt="..." />
+				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
 
 

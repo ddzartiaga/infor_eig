@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var EIG = /** @class */ (function () {
-    function EIG() {
+var InterestGroup = /** @class */ (function () {
+    function InterestGroup() {
     }
-    return EIG;
+    return InterestGroup;
 }());
-exports.EIG = EIG;
+exports.InterestGroup = InterestGroup;
 //# sourceMappingURL=eig.js.map

@@ -17,6 +17,51 @@ namespace ADAGroup.EIG.Service.Implementations
             _unitOfWork = uow;
         }
 
+        public InterestGroup GetGroupDetails(string groupId)
+        {
+            try
+            {
+                Guid gId;
+
+                if (!Guid.TryParse(groupId, out gId)) throw new Exception("Invalid Group ID");
+
+                return _unitOfWork.EIGRepo.Get(gId);
+            }
+            catch (Exception ex)
+            {
+                // Log exception;
+                throw ex;
+            }
+        }
+
+        public Guid UpsertInterestGroup(InterestGroup group)
+        {
+            try
+            {
+                if (group.Id == Guid.Empty)
+                {
+                    // Insert new record
+                    group.DateCreated = DateTime.UtcNow;
+                    _unitOfWork.EIGRepo.Add(group);
+                }
+                else
+                {
+                    group.DateModified = DateTime.UtcNow;
+                    _unitOfWork.EIGRepo.Update(group);
+                }
+
+                _unitOfWork.Commit();
+
+                return group.Id;
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                throw ex;
+            }
+
+        }
+
         public List<GroupShortInfo> GetGroupsShortInfo()
         {
             try
@@ -39,22 +84,7 @@ namespace ADAGroup.EIG.Service.Implementations
             }
         }
 
-        public InterestGroup GetGroupDetails(string groupId)
-        {
-            try
-            {
-                Guid gId;
-
-                if (!Guid.TryParse(groupId, out gId)) throw new Exception("Invalid Group ID");
-                    
-                return _unitOfWork.EIGRepo.Get(gId);
-            }
-            catch(Exception ex)
-            {
-                // Log exception;
-                throw ex;
-            }
-        }
+        
 
         public List<InterestGroup> GetInterestGroups()
         {
@@ -68,31 +98,7 @@ namespace ADAGroup.EIG.Service.Implementations
             }
         }
 
-        public void UpsertInterestGroup(InterestGroup group)
-        {
-            try
-            {
-                if (group.Id == Guid.Empty)
-                {
-                    // Insert new record
-                    group.DateCreated = DateTime.UtcNow;
-                    _unitOfWork.EIGRepo.Add(group);
-                }
-                else
-                {
-                    group.DateModified = DateTime.UtcNow;
-                    _unitOfWork.EIGRepo.Update(group);
-                }
-
-                _unitOfWork.Commit();
-            }
-            catch (Exception ex)
-            {
-                // TODO: Log error
-                throw ex;
-            }
-
-        }
+        
 
         public void SetStatus()
         {

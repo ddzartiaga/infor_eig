@@ -16,6 +16,6 @@ namespace ADAGroup.EIG.Domain
 
         public string FileType { get; set; }
 
-        public string ImageType { get; set; }
+        public string EntityType { get; set; }
     }
 }
