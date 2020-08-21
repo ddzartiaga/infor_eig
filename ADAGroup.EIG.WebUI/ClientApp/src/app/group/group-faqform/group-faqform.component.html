@@ -1,0 +1,28 @@
+<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="card border-info">
+		<div class="card-header bg-info" role="tab" id="newFAQHeading" data-toggle="collapse" data-parent="#accordion" href="#newFAQ" aria-expanded="true" aria-controls="newFAQ">
+			<h5 class="mb-0">
+				<a style="color: white" >Add Frequently Asked Question</a>
+			</h5>
+		</div>
+
+		<div id="newFAQ" class="collapse hide" role="tabpanel" aria-labelledby="newFAQHeading">
+			<div class="card-body">
+				<form [formGroup]="faqForm" (ngSubmit)="saveFAQ()" #formDir="ngForm">
+					<div class="form-group">
+						<label for="question"><b>Question:</b></label>
+						<input type="text" class="form-control" id="question" placeholder="Enter question here...">
+					</div>
+					<div class="form-group">
+						<label for="answer"><b>Answer:</b></label>
+						<textarea class="form-control" id="answer" rows="5" placeholder="Enter answer here..."></textarea>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-info float-right">ADD FAQ</button>
+					</div>
+				</form>
+				<br />
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,7 +1,12 @@
+using ADAGroup.EIG.Repository;
+using ADAGroup.EIG.Repository.Contracts;
+using ADAGroup.EIG.Service.Contracts;
+using ADAGroup.EIG.Service.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +30,24 @@ namespace ADAGroup.EIG.WebUI
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:EIGDatabase"],
+                b => b.MigrationsAssembly("ADAGroup.EIG.WebUI")));
+
+            services.AddScoped<DatabaseContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IInterestGroupService, InterestGroupService>();
+            services.AddScoped<IActivityService, ActivityService>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        /*.AllowCredentials()*/
+                        );
             });
         }
 
@@ -57,6 +80,7 @@ namespace ADAGroup.EIG.WebUI
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
 
             app.UseSpa(spa =>
             {

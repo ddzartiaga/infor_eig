@@ -1,0 +1,18 @@
+
+<form [formGroup]="groupInfoForm" (ngSubmit)="saveInfo()" #formDir="ngForm" novalidate>
+	<div class="form-group">
+		<label for="name"><b>Name:</b></label>
+		<input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter group's name..">
+	</div>
+	<div class="form-group">
+		<label for="goalPurpose"><b>Goal &amp; Purpose:</b></label>
+		<textarea formControlName="goalpurpose" class="form-control" id="goalPurpose" rows="7" placeholder="Enter group's goal and purpose..."></textarea>
+	</div>
+	<div class="form-group">
+		<label for="mission"><b>Mission:</b></label>
+		<textarea formControlName="mission" class="form-control" id="mission" rows="5" placeholder="Enter group's mission.."></textarea>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-outline-info float-right">Save Information</button>
+	</div>
+</form>
